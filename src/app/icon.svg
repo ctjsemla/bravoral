@@ -1,0 +1,15 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32" role="img" aria-label="BrasilOdds">
+  <rect width="32" height="32" rx="7" fill="#0c1d3a"/>
+  <rect y="27" width="32" height="5" fill="#00a826"/>
+  <text
+    x="16"
+    y="21"
+    text-anchor="middle"
+    fill="#ffffff"
+    font-family="Arial, Helvetica, sans-serif"
+    font-size="16"
+    font-weight="800"
+  >B</text>
+  <rect x="22" y="9" width="4" height="4" rx="1" fill="#1d4ed8"/>
+  <rect x="22" y="15" width="4" height="4" rx="1" fill="#1d4ed8" opacity="0.75"/>
+</svg>
