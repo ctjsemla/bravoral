@@ -1,33 +1,22 @@
 import type { Metadata } from "next";
-import { DM_Sans, Instrument_Serif } from "next/font/google";
+import { DM_Sans } from "next/font/google";
 import "./globals.css";
 
-const dmSans = DM_Sans({
+const font = DM_Sans({
   variable: "--font-dm-sans",
   subsets: ["latin"],
-  weight: ["400", "500", "600", "700"],
-});
-
-const instrumentSerif = Instrument_Serif({
-  variable: "--font-instrument-serif",
-  subsets: ["latin"],
-  weight: ["400"],
+  weight: ["400", "500", "600", "700", "800"],
 });
 
 export const metadata: Metadata = {
-  title: "BrasilOdds — Odds do futebol brasileiro",
-  description:
-    "Compare odds de apostas e acompanhe jogos ao vivo das ligas brasileiras.",
+  title: "BrasilOdds — Comparar odds",
+  description: "Compare odds de futebol no estilo Oddschecker. Horários BRT.",
 };
 
-export default function RootLayout({
-  children,
-}: Readonly<{
-  children: React.ReactNode;
-}>) {
+export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
-    <html lang="pt-BR" className={`${dmSans.variable} ${instrumentSerif.variable}`}>
-      <body className="min-h-screen antialiased">{children}</body>
+    <html lang="pt-BR" className={font.variable}>
+      <body>{children}</body>
     </html>
   );
 }

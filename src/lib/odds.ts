@@ -1,20 +1,21 @@
-import type { BookmakerOdds } from "@/types/match";
+import type { Odds } from "@/types";
+import type { OddKind } from "@/types";
 
-export function bestOddsValues(oddsList: BookmakerOdds[]) {
-  if (!oddsList.length) return { home: 0, draw: 0, away: 0 };
-  return {
-    home: Math.max(...oddsList.map((o) => o.home)),
-    draw: Math.max(...oddsList.map((o) => o.draw)),
-    away: Math.max(...oddsList.map((o) => o.away)),
-  };
+export function valuesFor(matchOdds: Odds[], kind: OddKind) {
+  return matchOdds.map((o) => o[kind]);
 }
 
-export function formatKickoff(iso: string) {
-  const d = new Date(iso);
-  return d.toLocaleString("pt-BR", {
-    day: "2-digit",
-    month: "short",
-    hour: "2-digit",
-    minute: "2-digit",
-  });
+export function bestValue(values: number[]) {
+  return Math.max(...values);
+}
+
+export function highlightLevel(value: number, values: number[]) {
+  const sorted = [...values].sort((a, b) => b - a);
+  const max = sorted[0];
+  const min = sorted[sorted.length - 1];
+  const second = sorted[1] ?? max;
+  if (value === max) return "best" as const;
+  if (value === second && value !== max) return "second" as const;
+  if (value <= min + 0.05) return "worst" as const;
+  return "normal" as const;
 }
